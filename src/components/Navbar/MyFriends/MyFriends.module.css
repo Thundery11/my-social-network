@@ -1,0 +1,15 @@
+.circle{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.circles{
+
+    width: 60px;
+    height: 60px;
+    background-color: yellow;
+    border-radius: 35px;
+    
+
+}
