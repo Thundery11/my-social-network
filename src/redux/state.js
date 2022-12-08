@@ -6,6 +6,7 @@ let state = {
       { id: 1, message: "Hi, how are u?", likescount: 12 },
       { id: 2, message: "It`s my first post", likescount: 4 },
     ],
+    newPostText: "Hello world",
   },
   messagesPage: {
     messages: [
@@ -16,6 +17,7 @@ let state = {
       { id: 5, message: "Blala" },
       { id: 6, message: "goodbye" },
     ],
+    newMessageText: "Hi everyone",
     dialogs: [
       { id: 1, name: "Katya" },
       { id: 2, name: "Sasha" },
@@ -26,16 +28,36 @@ let state = {
     ],
   },
   sidebar: {
-    sidebarFriends: [{ name: "Egor" }, { name: "Nazar" }, { name: "Dima" }],
+    sidebarFriends: [{ name: "Vlad" }, { name: "Nazar" }, { name: "Dima" }],
   },
 };
-export let addPost = (postMessage) => {
+export let addPost = () => {
   let newPost = {
     id: 5,
-    message: postMessage,
+    message: state.profilePage.newPostText,
     likescount: 0,
   };
   state.profilePage.postData.push(newPost);
+  state.profilePage.newPostText = "";
+  renderEntireTree(state);
+};
+export let updateNewPostText = (newText) => {
+  state.profilePage.newPostText = newText;
+  renderEntireTree(state);
+};
+
+export let sendMessage = () => {
+  let newMessage = {
+    id: 7,
+    message: state.messagesPage.newMessageText,
+  };
+  state.messagesPage.messages.push(newMessage);
+  state.messagesPage.newMessageText = "";
+  renderEntireTree(state);
+};
+
+export let updateNewMessageText = (newText) => {
+  state.messagesPage.newMessageText = newText;
   renderEntireTree(state);
 };
 
