@@ -1,68 +1,72 @@
-let renderEntireTree = () => {
-  console.log("state changed");
-};
-let state = {
-  profilePage: {
-    postData: [
-      { id: 1, message: "Hi, how are u?", likescount: 12 },
-      { id: 2, message: "It`s my first post", likescount: 4 },
-    ],
-    newPostText: "Hello world",
+let store = {
+  _state: {
+    profilePage: {
+      postData: [
+        { id: 1, message: "Hi, how are u?", likescount: 12 },
+        { id: 2, message: "It`s my first post", likescount: 4 },
+      ],
+      newPostText: "Hello world",
+    },
+    messagesPage: {
+      messages: [
+        { id: 1, message: "Hi" },
+        { id: 2, message: "How are you?" },
+        { id: 3, message: "I`m fine, and U?" },
+        { id: 4, message: "I`m too" },
+        { id: 5, message: "Blala" },
+        { id: 6, message: "goodbye" },
+      ],
+      newMessageText: "Hi everyone",
+      dialogs: [
+        { id: 1, name: "Katya" },
+        { id: 2, name: "Sasha" },
+        { id: 3, name: "Dasha" },
+        { id: 4, name: "Denis" },
+        { id: 5, name: "Jenya" },
+        { id: 6, name: "Yulia" },
+      ],
+    },
+    sidebar: {
+      sidebarFriends: [{ name: "Vlad" }, { name: "Nazar" }, { name: "Dima" }],
+    },
   },
-  messagesPage: {
-    messages: [
-      { id: 1, message: "Hi" },
-      { id: 2, message: "How are you?" },
-      { id: 3, message: "I`m fine, and U?" },
-      { id: 4, message: "I`m too" },
-      { id: 5, message: "Blala" },
-      { id: 6, message: "goodbye" },
-    ],
-    newMessageText: "Hi everyone",
-    dialogs: [
-      { id: 1, name: "Katya" },
-      { id: 2, name: "Sasha" },
-      { id: 3, name: "Dasha" },
-      { id: 4, name: "Denis" },
-      { id: 5, name: "Jenya" },
-      { id: 6, name: "Yulia" },
-    ],
+  getState() {
+    return this._state;
   },
-  sidebar: {
-    sidebarFriends: [{ name: "Vlad" }, { name: "Nazar" }, { name: "Dima" }],
+  _callSubscriber() {
+    console.log("state changed");
   },
-};
-export const addPost = () => {
-  let newPost = {
-    id: 5,
-    message: state.profilePage.newPostText,
-    likescount: 0,
-  };
-  state.profilePage.postData.push(newPost);
-  state.profilePage.newPostText = "";
-  renderEntireTree(state);
-};
-export const updateNewPostText = (newText) => {
-  state.profilePage.newPostText = newText;
-  renderEntireTree(state);
+  addPost() {
+    debugger;
+    let newPost = {
+      id: 5,
+      message: this._state.profilePage.newPostText,
+      likescount: 0,
+    };
+    this._state.profilePage.postData.push(newPost);
+    this._state.profilePage.newPostText = "";
+    this._callSubscriber(this._state);
+  },
+  updateNewPostText(newText) {
+    this._state.profilePage.newPostText = newText;
+    this._callSubscriber(this._state);
+  },
+  sendMessage() {
+    let newMessage = {
+      id: 7,
+      message: this._state.messagesPage.newMessageText,
+    };
+    this._state.messagesPage.messages.push(newMessage);
+    this._state.messagesPage.newMessageText = "";
+    this._callSubscriber(this._state);
+  },
+  updateNewMessageText(newText) {
+    this._state.messagesPage.newMessageText = newText;
+    this._callSubscriber(this._state);
+  },
+  subscribe(observer) {
+    this._callSubscriber = observer;
+  },
 };
 
-export const sendMessage = () => {
-  let newMessage = {
-    id: 7,
-    message: state.messagesPage.newMessageText,
-  };
-  state.messagesPage.messages.push(newMessage);
-  state.messagesPage.newMessageText = "";
-  renderEntireTree(state);
-};
-
-export const updateNewMessageText = (newText) => {
-  state.messagesPage.newMessageText = newText;
-  renderEntireTree(state);
-};
-export const subscribe = (observer) => {
-  renderEntireTree = observer;
-};
-
-export default state;
+export default store;
