@@ -9,7 +9,6 @@ import News from "./components/News/News";
 import Settings from "./components/Settings/Settings";
 import { Routes } from "react-router-dom";
 const App = (props) => {
-  debugger;
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -25,6 +24,7 @@ const App = (props) => {
               path="/dialogs/*"
               element={
                 <Dialogs
+                  store={props.store}
                   state={props.state.messagesPage}
                   messages={props.state.messagesPage}
                   newMessageText={props.state.messagesPage.newMessageText}
