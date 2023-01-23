@@ -41,5 +41,5 @@ const App = (props) => {
     </BrowserRouter>
   );
 };
-//22
+
 export default App;
