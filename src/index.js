@@ -5,18 +5,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import { Provider } from "react-redux";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 let renderEntireTree = (state) => {
   root.render(
     <React.StrictMode>
-      <App
-        store={store}
-        state={state}
-        dispatch={store.dispatch.bind(store)}
-
-        // sendMessage={store.sendMessage.bind(store)}
-        // updateNewMessageText={store.updateNewMessageText.bind(store)}
-      />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </React.StrictMode>
   );
 };
