@@ -2,7 +2,7 @@ import s from "./Navbar.module.css";
 import { NavLink } from "react-router-dom";
 import MyFriends from "./MyFriends/Myfriends";
 const Navbar = (props) => {
-  let friends = props.state.sidebarFriends.map((f) => (
+  let friends = props.sidebarFriends.map((f) => (
     <MyFriends friendName={f.name} />
   ));
 
