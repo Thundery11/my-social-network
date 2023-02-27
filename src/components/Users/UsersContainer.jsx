@@ -4,13 +4,13 @@ import Users from "./Users";
 
 let mapStateToProps = (state) => {
   return {
-    users: state.usersPage.items,
+    items: state.usersPage.items,
   };
 };
 let mapDispatchToProps = (dispatch) => {
   return {
-    setUsers: (users) => {
-      dispatch(setUsersAC(users));
+    setUsers: (items) => {
+      dispatch(setUsersAC(items));
     },
   };
 };
