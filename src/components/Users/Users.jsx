@@ -4,41 +4,11 @@ import UserPhoto from "../../assets/images/male-avatar.jpg";
 import s from "./Users.module.css";
 let Users = (props) => {
   if (props.items.length === 0) {
-    props.setUsers([
-      {
-        name: "Ebragim55",
-        id: 1096,
-        uniqueUrlName: null,
-        photos: {
-          small: null,
-          large: null,
-        },
-        status: null,
-        followed: false,
-      },
-      {
-        name: "uppgraedd",
-        id: 1095,
-        uniqueUrlName: null,
-        photos: {
-          small: null,
-          large: null,
-        },
-        status: "ыва234",
-        followed: false,
-      },
-      {
-        name: "capitan",
-        id: 1094,
-        uniqueUrlName: null,
-        photos: {
-          small: null,
-          large: null,
-        },
-        status: null,
-        followed: false,
-      },
-    ]);
+    axios
+      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .then((response) => {
+        props.setUsers(response.data.items);
+      });
   }
 
   return (
