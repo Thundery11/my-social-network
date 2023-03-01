@@ -3,16 +3,19 @@ import React from "react";
 import UserPhoto from "../../assets/images/male-avatar.jpg";
 import s from "./Users.module.css";
 let Users = (props) => {
-  if (props.items.length === 0) {
-    axios
-      .get("https://social-network.samuraijs.com/api/1.0/users")
-      .then((response) => {
-        props.setUsers(response.data.items);
-      });
-  }
+  let getUsers = () => {
+    if (props.items.length === 0) {
+      axios
+        .get("https://social-network.samuraijs.com/api/1.0/users")
+        .then((response) => {
+          props.setUsers(response.data.items);
+        });
+    }
+  };
 
   return (
     <div>
+      <button onClick={getUsers}>Get Users</button>
       {props.items.map((u) => (
         <div key={u.id}>
           <span>
