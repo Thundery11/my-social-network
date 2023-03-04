@@ -60,6 +60,5 @@ class Users extends React.Component {
     );
   }
 }
-//opyat` nichego ne sdelal)
 
 export default Users;
