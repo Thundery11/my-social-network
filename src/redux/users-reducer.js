@@ -3,6 +3,9 @@ const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 let initialstate = {
   items: [],
+  pageSize: 5,
+  totalUsersCount: 20,
+  currentPage: 2,
 };
 
 const usersReducer = (state = initialstate, action) => {

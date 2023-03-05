@@ -6,6 +6,9 @@ let mapStateToProps = (state) => {
   return {
     items: state.usersPage.items,
     follow: state.usersPage.items.follow,
+    pageSize: state.usersPage.pageSize,
+    totalUsersCount: state.usersPage.totalUsersCount,
+    currentPage: state.usersPage.currentPage,
   };
 };
 let mapDispatchToProps = (dispatch) => {
