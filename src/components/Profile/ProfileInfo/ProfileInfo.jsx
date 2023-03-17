@@ -1,6 +1,10 @@
+import Preloader from "../../common/preloader/preloader";
 import s from "./ProfileInfo.module.css";
 
 const ProfileInfo = (props) => {
+  if (!props.profile) {
+    return <Preloader />;
+  }
   return (
     <div>
       <div>
