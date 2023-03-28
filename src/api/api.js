@@ -21,3 +21,15 @@ export const UsersAPI = {
     return instance.delete(`follow/${id}`).then((response) => response.data);
   },
 };
+
+export const ProfileAPI = {
+  getUserProfile(userId = 2038) {
+    return instance.get(`profile/` + userId).then((response) => response.data);
+  },
+};
+
+export const AuthAPI = {
+  setAuth() {
+    return instance.get(`auth/me`).then((response) => response.data);
+  },
+};
