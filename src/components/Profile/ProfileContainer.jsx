@@ -27,7 +27,7 @@ class ProfileContainer extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
-  return { profile: state.profilePage.profile };
+  return { profile: state.profilePage.profile, isAuth: state.auth.isAuth };
 };
 let withUrlDataContainerComponent = withRouter(ProfileContainer);
 export default connect(mapStateToProps, { setUsers })(

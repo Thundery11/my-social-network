@@ -9,6 +9,7 @@ import NavbarContainer from "./components/Navbar/NavbarContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/login/Login";
 const App = (props) => {
   return (
     <BrowserRouter>
@@ -23,6 +24,7 @@ const App = (props) => {
             <Route path="/music/*" element={<Music />} />
             <Route path="/news/*" element={<News />} />
             <Route path="/settings/*" element={<Settings />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </div>

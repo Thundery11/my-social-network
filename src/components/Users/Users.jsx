@@ -1,12 +1,14 @@
 import s from "./Users.module.css";
 import userPhoto from "../../assets/images/male-avatar.jpg";
-import { NavLink } from "react-router-dom";
-
+import { Navigate, NavLink } from "react-router-dom";
 let Users = (props) => {
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
     pages.push(i);
+  }
+  if (!props.isAuth) {
+    return <Navigate to={"/login"} />;
   }
   return (
     <div>
