@@ -4,7 +4,7 @@ const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 let initialstate = {
-  postData: [
+  post: [
     { id: 1, message: "Hi, how are u?", likescount: 12 },
     { id: 2, message: "It`s my first post", likescount: 4 },
   ],
@@ -21,8 +21,8 @@ let profileReducer = (state = initialstate, action) => {
         likescount: 0,
       };
       let stateCopy = { ...state };
-      stateCopy.posts = [...state.posts];
-      stateCopy.posts.push(newPost);
+      stateCopy.post = [...state.post];
+      stateCopy.post.push(newPost);
       stateCopy.newPostText = "";
       return stateCopy;
     }
