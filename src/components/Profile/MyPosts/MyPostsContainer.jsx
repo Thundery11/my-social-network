@@ -5,6 +5,7 @@ import {
   addPostActionCreator,
 } from "../../../redux/profile-reducer.js";
 import MyPosts from "./MyPosts";
+import { WithAuthRedirect } from "../../hoc/WithAuthRedirect.jsx";
 
 let mapStateToProps = (state) => {
   return {
@@ -25,6 +26,8 @@ let mapDispatchToProps = (dispatch) => {
   };
 };
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+const MyPostsContainer = WithAuthRedirect(
+  connect(mapStateToProps, mapDispatchToProps)(MyPosts)
+);
 
 export default MyPostsContainer;
