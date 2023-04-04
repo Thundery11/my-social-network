@@ -1,5 +1,6 @@
 import Preloader from "../../common/preloader/preloader";
 import s from "./ProfileInfo.module.css";
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
   if (!props.profile) {
@@ -14,7 +15,10 @@ const ProfileInfo = (props) => {
         />
       </div>
       <div className={s.descriptionBlock}>
-        <div> Статус: {props.profile.aboutMe}</div>
+        <div>
+          {" "}
+          Статус: <ProfileStatus status={"Привет"} />
+        </div>
         <img src={props.profile.photos.large} alt="profile-avatar" />
       </div>
       <div>
