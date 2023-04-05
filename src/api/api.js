@@ -26,6 +26,16 @@ export const ProfileAPI = {
   getUserProfile(userId) {
     return instance.get(`profile/${userId}`).then((response) => response.data);
   },
+  getProfileStatus(userId) {
+    return instance
+      .get(`/profile/status/${userId}`)
+      .then((response) => response.data);
+  },
+  updateProfileStatus(status) {
+    return instance
+      .put(`/profile/status`, { status: status })
+      .then((responce) => responce.data);
+  },
 };
 
 export const AuthAPI = {
