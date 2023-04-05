@@ -78,7 +78,7 @@ export const setProfileStatus = (userId) => (dispatch) => {
 export const updateProfileStatus = (status) => (dispatch) => {
   ProfileAPI.updateProfileStatus(status).then((data) => {
     if (data.resultCode === 0) {
-      dispatch(getProfileStatus(data));
+      dispatch(getProfileStatus(status));
     }
   });
 };
